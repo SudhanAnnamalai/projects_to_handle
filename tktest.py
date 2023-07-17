@@ -1,5 +1,6 @@
 #Import all Tkinter modules
 from tkinter import * 
+import customtkinter
 
 #Function to convert fahrenheit to Celsius
 def fahrenheit_to_celsius(temperature):
@@ -26,30 +27,30 @@ def execute():
 
 
 
-root = Tk()
+root = customtkinter.CTk()
 root.title("Temperature Converter")
 
 #-----------Input Label and Entry field--------#
-label = Label(root, text="Enter the Temperature: ")
+label = customtkinter.CTkLabel(root, text="Enter the Temperature: ")
 label.pack(expand=10)
-input_entry = Entry(root)
+input_entry = customtkinter.CTkEntry(root)
 input_entry.pack(expand=10)
 
 #---------Radio Buttons---------------------#
 var = IntVar()
-f_to_c = Radiobutton(root, text = "Fahreheit to Celsius", variable=var, value=1)
+f_to_c = customtkinter.CTkRadioButton(root, text = "Fahreheit to Celsius", variable=var, value=1)
 f_to_c.pack()
-c_to_f = Radiobutton(root, text = " Celsius to Fahreheit", variable=var, value=0)
+c_to_f = customtkinter.CTkRadioButton(root, text = " Celsius to Fahreheit", variable=var, value=0)
 c_to_f.pack()
 
 #------------Button to Invoke a Function----------------------#
-btn = Button(root, text="Convert", command=execute)
+btn = customtkinter.CTkButton(root, text="Convert", command=execute)
 btn.pack()
 
 #----------------Output labels------------------------#
-output_label = Label(root, text="Converted temperature is :")
+output_label = customtkinter.CTkLabel(root, text="Converted temperature is :")
 output_label.pack()
-output_entry = Entry(root)
+output_entry = customtkinter.CTkEntry(root)
 output_entry.pack()
 
 
