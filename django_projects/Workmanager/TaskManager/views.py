@@ -1,17 +1,19 @@
 # views.py
 import os
 import tabula
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from .forms import PdfUploadForm
 from .models import PdfFile
+from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 def upload_pdf(request):
     if request.method == 'POST':
         form = PdfUploadForm(request.POST, request.FILES)
         if form.is_valid():
             pdf_file = request.FILES['pdf_file']
             # Save the uploaded PDF file
-            destination = os.path.join('path_to_save_uploads', pdf_file.name)
+            destination = os.path.join('TaskManager/static', pdf_file.name)
             with open(destination, 'wb+') as destination_file:
                 for chunk in pdf_file.chunks():
                     destination_file.write(chunk)
@@ -38,12 +40,12 @@ def upload_pdf(request):
             pdf.save()
 
             # Redirect to a success page
-            return redirect('success_page')  # Define the URL name for the success page
+            return redirect('success_page')
 
     else:
         form = PdfUploadForm()
     return render(request, 'upload_pdf.html', {'form': form})
-
+@csrf_exempt
 def pdf_list(request):
     # Query PDF files and pass them to the template
     pdf_files = PdfFile.objects.all()

@@ -3,14 +3,44 @@
 <html>
 <head>
     <title>List of PDF Files</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
     <h2>List of PDF Files:</h2>
-    <ul>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Size</th>
+            <th>Number of Tables</th>
+            <th>Number of Rows</th>
+            <th>Number of Columns</th>
+        </tr>
         {% for pdf_file in pdf_files %}
-        <li>{{ pdf_file.name }}</li>
+        <tr>
+            <td>{{ pdf_file.name }}</td>
+            <td>{{ pdf_file.location }}</td>
+            <td>{{ pdf_file.size }}</td>
+            <td>{{ pdf_file.num_tables }}</td>
+            <td>{{ pdf_file.num_rows }}</td>
+            <td>{{ pdf_file.num_columns }}</td>
+        </tr>
         {% endfor %}
-    </ul>
+    </table>
 </body>
 </html>
-
