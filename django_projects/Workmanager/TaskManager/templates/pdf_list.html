@@ -1,0 +1,16 @@
+<!-- pdf_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List of PDF Files</title>
+</head>
+<body>
+    <h2>List of PDF Files:</h2>
+    <ul>
+        {% for pdf_file in pdf_files %}
+        <li>{{ pdf_file.name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

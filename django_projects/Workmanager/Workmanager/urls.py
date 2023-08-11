@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from TaskManager import views
 
 urlpatterns = [
+    path('', views.upload_pdf),
+    path('result', views.pdf_list, name = "success_page"),
     path('admin/', admin.site.urls),
 ]
